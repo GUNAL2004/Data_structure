@@ -1,0 +1,62 @@
+You are developing a system for a music library that organizes songs in a circular playlist. Each song in the playlist is linked to the next song, and the last song is linked back to the first song, forming a circular linked list. Users can search for a specific song to check if it is in the playlist.
+
+Your task is to complete the cll_search() function that takes the head (starting node) of the circular linked list and a song title to search for. If the song is found in the playlist, return 1; otherwise, return 0
+
+Input Format:
+2
+Counting Stars
+Greedy
+
+Greedy
+
+Output Format
+1
+Sample Input
+Sample Output
+
+
+SOLUTION:
+
+
+
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+    class Node:            
+        def __init__(self,data):
+            self.data=data
+            self.next=None
+    def Append(self,new_data):
+        new_node=self.Node(new_data)  
+        if self.head is None:
+            self.head=new_node
+            new_node.next=self.head
+        else:
+            last=self.head
+            while last.next!=self.head:
+                last=last.next
+            last.next=new_node
+            new_node.next=self.head
+    def display(self,key):
+        temp=self.head
+        r=0
+        while(1):
+            if(temp.data.lower()==key.lower()):
+                r=1
+            temp=temp.next
+            if temp==self.head:
+                break
+        print()
+        if r==1:
+            print("1")
+        else:
+            print("0")
+       
+k=Linkedlist()
+n=int(input())
+for i in range(n):
+    m=input()
+    k.Append(m)
+key=input()
+k.display(key)
+
