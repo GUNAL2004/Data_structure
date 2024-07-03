@@ -1,0 +1,62 @@
+You are the brilliant & top player in your academy. The academy decided to conduct an ceremony for the senior player, they asked you to set up the seating arrangements in the order of tree structure. So, you decided to solve that with the help of binary search tree implementation. When the coach arrived he was curious to know about the length of the seating arrangement. Instead of doing it manually, you decided to solve it by using programming with the help of your coder friend.
+
+Input Format:
+Get continuous input until user enters a negative value.
+
+Output Format:
+Print "Found" if senior player is found else print "Not Found"
+
+Sample Input: 
+10
+5
+12
+7
+15
+18
+1
+-1
+7
+
+Sample Output:
+Height of the BST is 4
+
+
+solution:
+
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+    def insert_at_end(self,data):
+        new_node=Node(data)
+        if not self.head:
+            self.head=new_node
+        else:
+            current=self.head
+            while(current.next):
+                current=current.next
+            current.next=new_node
+    def print_list(self):
+        current=self.head
+        while(current):
+            print(current.data,end=" ")
+            current=current.next
+#main program
+train=Linkedlist()
+n=int(input("Enter the number of train cars:\n"))
+if n>0:
+    for i in range(n):
+        passenger=int(input())
+        train.insert_at_end(passenger)
+    print("Train route:",end=" ")
+    train.print_list()
+else:
+    print("No train cars to display")
+        
+        
+
+
