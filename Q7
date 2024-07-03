@@ -1,0 +1,54 @@
+You are working on a digital library system where each book is represented as a node in a doubly linked list. The library system needs a feature to display all the books available from the first book to the last book in the order they are stored. You need to implement the dll_forward_display() function that will receive the starting node of the doubly linked list and print the titles of the books from the first book to the last book.
+
+Input Format
+First Line of Input consists of Integer,Number of books
+Next Line of Input consists of String,Name of the Books
+
+Output Format
+Display the titles of the books from the first book to the last book.
+
+Sample Input:
+2
+Connect the Dots
+The Person who moved My Cheese
+
+Sample Output:
+Connect the Dots
+The Person who moved My Cheese
+
+
+SOLUTION:
+
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+        self.prev=None
+class DoublyLinkedlist:
+    def __init__(self):
+        self.head=None
+        #inset at the end
+    def insert_at_the_end(self,data):
+        new_node=Node(data)
+        if not self.head:
+            self.head=new_node
+            return
+        current=self.head
+        while(current.next):
+            current=current.next
+        current.next=new_node
+        new_node.prev=current
+    def print_list(self):
+        current=self.head
+        while(current):
+            print(current.data)
+            current=current.next  
+#main program
+dll=DoublyLinkedlist()
+n=int(input())
+for i in range(n):
+    title=input()
+    dll.insert_at_the_end(title)
+dll.print_list()
+
