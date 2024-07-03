@@ -1,0 +1,93 @@
+Imagine you are a librarian managing a queue of patrons waiting to check out books. The queue is implemented using a singly linked list, where each node represents a patron and the next pointer indicates the person behind them in line.
+
+New patrons are added to the back of the line (end of the linked list).
+
+You need a function to efficiently remove the first patron in line when they are finished being served (i.e., delete the node at the beginning of the linked list).
+
+How can you design a deleteAtBeginning() function to achieve this task in the context of your library queue? What are some edge cases you need to consider (e.g., empty queue)?
+
+
+
+
+Input Format:
+
+Give n number of values use -1 to stop the input.
+
+Output Format:
+
+Do print the values of each node as space-separated.
+
+
+
+Constraints:
+
+1<= input <= 10000
+
+
+
+Sample Input:
+
+1001
+
+1002
+
+1003
+
+1004
+
+1005
+
+1006
+
+1007
+
+-1
+
+Sample Output:
+
+1002 1003 10004 1005 1006 1007 -1
+
+
+
+SOLUTION:
+
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+    def insert_at_end(self,data):
+        new_node=Node(data)
+        if not self.head:
+            self.head=new_node
+        else:
+            current=self.head
+            while(current.next):
+                current=current.next
+            current.next=new_node
+    def deletebegin(self):
+        if self.head is None:
+            print("Queue is Empty")
+            return
+        self.head=self.head.next
+    def display(self):
+        current=self.head
+        while(current):
+            print(current.data,end=" ")
+            current=current.next
+#main program
+ll=Linkedlist()
+while(1):
+    value=int(input())
+    if value==-1:
+        break
+    ll.insert_at_end(value)
+ll.deletebegin()
+ll.display()    
+        
+
+
+
